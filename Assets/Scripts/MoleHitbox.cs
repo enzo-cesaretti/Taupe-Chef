@@ -10,11 +10,17 @@ public class MoleHitbox : MonoBehaviour
         mole = GetComponentInParent<Mole>();
     }
 
+
     private void OnTriggerEnter(Collider other)
     {
-        if (mole.IsUp)
-        {
-            mole.TaupeDown();
-        }
+        var weapon = other.GetComponentInParent<IWeapon>();
+        if (weapon == null) return;
+
+        if (mole.State != Mole.MoleState.Up) return;
+        if (!weapon.CanHit()) return;
+
+        mole.RegisterHit();
+
+        weapon.OnHit();
     }
 }

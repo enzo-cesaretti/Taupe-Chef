@@ -2,32 +2,68 @@ using UnityEngine;
 
 public class Mole : MonoBehaviour
 {
-    private Vector3 _originalPos = Vector3.zero;
+    public Animator _animator;
 
-    public bool IsUp { get; private set; } = false;
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public enum MoleState
     {
-        _originalPos = transform.position;
-        MoleUp();
+        Down,
+        GoingUp,
+        Up,
+        GoingDown
     }
+    public int Hp { get; private set; } = 0;
+    public int BaseHp { get; private set; } = 3;
+    public MoleManager manager;
 
-    // Update is called once per frame
-    void Update()
+    public MoleState State { get; private set; } = MoleState.Down;
+
+    public void RegisterHit()
     {
-        
+        Hp--;
+        if (Hp <= 0)
+        {
+            SquashMole();
+        }
+        else
+        {
+            _animator.Play("hit");
+        }
     }
 
     public void MoleUp()
     {
-        transform.position = _originalPos + new Vector3(0f, 0.5f, 0f);
-        IsUp = true;
+        Hp = BaseHp;
+        State = MoleState.GoingUp;
+        _animator.Play("popUp");
+    }
+
+    public void OnPopUpFinished()
+    {
+        State = MoleState.Up;
+    }
+
+
+    private void SquashMole()
+    {
+        manager?.CancelMoleTimer(this);
+
+        State = MoleState.GoingDown;
+        _animator.Play("squash");
+    }
+
+    public void OnSquashFinished()
+    {
+        State = MoleState.Down;
     }
 
     public void MoleDown()
     {
-        transform.position = _originalPos;
-        IsUp = false;
+        State = MoleState.GoingDown;
+        _animator.Play("goDown");
+    }
+
+    public void OnGoDownFinished()
+    {
+        State = MoleState.Down;
     }
 }
