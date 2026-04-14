@@ -81,6 +81,8 @@ public class MoleManager : MonoBehaviour
 
         if (mole != null)
         {
+            CancelMoleTimer(mole);
+
             mole.MoleUp();
 
             float stayTime = Random.Range(minStayDuration, maxStayDuration);

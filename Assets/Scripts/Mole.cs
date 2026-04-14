@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class Mole : MonoBehaviour
 {
@@ -35,11 +36,7 @@ public class Mole : MonoBehaviour
         Hp = BaseHp;
         State = MoleState.GoingUp;
         _animator.Play("popUp");
-    }
-
-    public void OnPopUpFinished()
-    {
-        State = MoleState.Up;
+        StartCoroutine(WaitForAnimation("popUp"));
     }
 
 
@@ -49,21 +46,29 @@ public class Mole : MonoBehaviour
 
         State = MoleState.GoingDown;
         _animator.Play("squash");
+        StartCoroutine(WaitForAnimation("squash"));
     }
 
-    public void OnSquashFinished()
-    {
-        State = MoleState.Down;
-    }
 
     public void MoleDown()
     {
         State = MoleState.GoingDown;
         _animator.Play("goDown");
+        StartCoroutine(WaitForAnimation("goDown"));
     }
 
-    public void OnGoDownFinished()
+
+    private IEnumerator WaitForAnimation(string animName)
     {
-        State = MoleState.Down;
+        float length = _animator.GetCurrentAnimatorStateInfo(0).length;
+        yield return new WaitForSeconds(length);
+
+        if (animName == "popUp")
+        {
+            State = MoleState.Up;
+        } else if (animName == "squash" || animName == "goDown")
+        {
+            State = MoleState.Down;
+        }
     }
 }
