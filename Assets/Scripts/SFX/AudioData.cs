@@ -14,7 +14,7 @@ public class AudioData : ScriptableObject
     [Header("3D Settings")]
     public float minDistance = 1f;
     public float maxDistance = 20f;
-    public Transform targetObject;
+    public GameObject targetObject;
 
     [Header("Category")]
     public AudioCategory category;

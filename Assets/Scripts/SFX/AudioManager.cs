@@ -49,7 +49,7 @@ public class AudioManager : MonoBehaviour
 
         Configure(source, data);
 
-        source.transform.position = data.targetObject.position;
+        source.transform.position = data.targetObject.transform.position;
         source.Play();
 
         StartCoroutine(ReturnToPool(source, data.clip.length));
@@ -61,7 +61,7 @@ public class AudioManager : MonoBehaviour
 
         Configure(source, data);
 
-        source.transform.SetParent(data.targetObject);
+        source.transform.SetParent(data.targetObject.transform);
         source.transform.localPosition = Vector3.zero;
 
         source.Play();
