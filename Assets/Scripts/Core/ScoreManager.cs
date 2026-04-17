@@ -6,6 +6,8 @@ public class ScoreManager : MonoBehaviour
     public static ScoreManager Instance { get; private set; }
 
     public event Action<int> OnScoreChanged;
+    public event Action<int> OnScoreAdded;
+    public event Action<int> OnScoreSpent;
 
     [SerializeField]
     private int currentScore = 0;
@@ -31,6 +33,7 @@ public class ScoreManager : MonoBehaviour
 
         currentScore += amount;
         OnScoreChanged?.Invoke(currentScore);
+        OnScoreAdded?.Invoke(amount);
     }
 
     public bool SpendScore(int amount)
@@ -41,7 +44,10 @@ public class ScoreManager : MonoBehaviour
             return false;
 
         currentScore -= amount;
+
         OnScoreChanged?.Invoke(currentScore);
+        OnScoreSpent?.Invoke(amount);
+
         return true;
     }
 
