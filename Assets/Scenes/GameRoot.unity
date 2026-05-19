@@ -2615,6 +2615,7 @@ GameObject:
   - component: {fileID: 210252071}
   - component: {fileID: 210252073}
   - component: {fileID: 210252072}
+  - component: {fileID: 210252074}
   m_Layer: 5
   m_Name: SpawnRateText
   m_TagString: Untagged
@@ -2638,8 +2639,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 9.03, y: 1.65}
-  m_SizeDelta: {x: 30.097, y: 13.396}
+  m_AnchoredPosition: {x: 8.77, y: 1.65}
+  m_SizeDelta: {x: 47.891, y: 13.396}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &210252072
 MonoBehaviour:
@@ -2661,7 +2662,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Tier 1
+  m_text: Tier 1/100
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2741,6 +2742,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 210252070}
   m_CullTransparentMesh: 1
+--- !u!114 &210252074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 210252070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc00e646e147ed048acc1d8d9b72d80b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ShopTierUI
+  _itemType: 2
+  _tierText: {fileID: 210252072}
 --- !u!1001 &212462760
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2830,6 +2845,7 @@ GameObject:
   - component: {fileID: 214506115}
   - component: {fileID: 214506117}
   - component: {fileID: 214506116}
+  - component: {fileID: 214506118}
   m_Layer: 5
   m_Name: LuckText
   m_TagString: Untagged
@@ -2853,8 +2869,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.51, y: 1.65}
-  m_SizeDelta: {x: 30.097, y: 13.396}
+  m_AnchoredPosition: {x: -0.44, y: 1.65}
+  m_SizeDelta: {x: 48.282, y: 13.396}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &214506116
 MonoBehaviour:
@@ -2876,7 +2892,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Tier 1
+  m_text: Tier 1/100
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2956,6 +2972,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 214506114}
   m_CullTransparentMesh: 1
+--- !u!114 &214506118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 214506114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc00e646e147ed048acc1d8d9b72d80b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ShopTierUI
+  _itemType: 1
+  _tierText: {fileID: 214506116}
 --- !u!1001 &215587347
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6793,6 +6823,7 @@ GameObject:
   - component: {fileID: 583325830}
   - component: {fileID: 583325832}
   - component: {fileID: 583325831}
+  - component: {fileID: 583325833}
   m_Layer: 5
   m_Name: CoinText
   m_TagString: Untagged
@@ -6816,8 +6847,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -9.26, y: 1.65}
-  m_SizeDelta: {x: 30.097, y: 13.396}
+  m_AnchoredPosition: {x: -8.92, y: 1.65}
+  m_SizeDelta: {x: 48.686, y: 13.396}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &583325831
 MonoBehaviour:
@@ -6839,7 +6870,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Tier 1
+  m_text: Tier 1/100
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6919,6 +6950,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 583325829}
   m_CullTransparentMesh: 1
+--- !u!114 &583325833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 583325829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc00e646e147ed048acc1d8d9b72d80b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ShopTierUI
+  _itemType: 0
+  _tierText: {fileID: 583325831}
 --- !u!1001 &601315355
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9061,15 +9106,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3658356871665226090, guid: 3016a9d029c6aeb4b85502f71532780b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.9571208
+      value: 0.908
       objectReference: {fileID: 0}
     - target: {fileID: 3658356871665226090, guid: 3016a9d029c6aeb4b85502f71532780b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.1926199
+      value: 1.095
       objectReference: {fileID: 0}
     - target: {fileID: 3658356871665226090, guid: 3016a9d029c6aeb4b85502f71532780b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.0699239
+      value: 3.029
       objectReference: {fileID: 0}
     - target: {fileID: 3658356871665226090, guid: 3016a9d029c6aeb4b85502f71532780b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -9168,7 +9213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b90a94fa897c79f4a8494995e665fe43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShopButton
-  _itemType: 0
+  _itemType: 2
 --- !u!114 &762576910
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14723,7 +14768,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b90a94fa897c79f4a8494995e665fe43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShopButton
-  _itemType: 0
+  _itemType: 1
 --- !u!114 &1306531706
 MonoBehaviour:
   m_ObjectHideFlags: 0

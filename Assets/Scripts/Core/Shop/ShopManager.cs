@@ -116,7 +116,7 @@ public sealed class ShopManager : MonoBehaviour
         }
     }
 
-    private ShopItemData GetItemData(ShopItemType type)
+    public ShopItemData GetItemData(ShopItemType type)
     {
         foreach (var item in _shopItems)
         {
