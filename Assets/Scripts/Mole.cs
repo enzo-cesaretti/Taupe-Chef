@@ -13,7 +13,7 @@ public class Mole : MonoBehaviour
         GoingDown
     }
     public int Hp { get; private set; } = 0;
-    public int BaseHp { get; private set; } = 3;
+    public int BaseHp { get; private set; } = 2;
     public MoleManager manager;
 
     public MoleState State { get; private set; } = MoleState.Down;
