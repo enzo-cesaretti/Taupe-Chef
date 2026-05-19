@@ -84,4 +84,9 @@ public sealed class CoinManager : MonoBehaviour
 
         OnCoinsChanged?.Invoke(_currentCoins);
     }
+
+    public bool HasEnoughCoins(int amount)
+    {
+        return _currentCoins >= amount;
+    }
 }
