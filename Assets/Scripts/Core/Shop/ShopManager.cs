@@ -39,53 +39,75 @@ public sealed class ShopManager : MonoBehaviour
         return _purchasedTiers[type];
     }
 
+    public int GetUpgradeCost(ShopItemType type)
+    {
+        ShopItemData item = GetItemData(type);
+
+        int currentTier = _purchasedTiers[type];
+
+        return Mathf.RoundToInt(
+            item.BaseCost *
+            Mathf.Pow(item.CostMultiplier, currentTier));
+    }
+
+    public float GetUpgradeValue(ShopItemType type)
+    {
+        ShopItemData item = GetItemData(type);
+
+        int currentTier = _purchasedTiers[type];
+
+        return
+            item.BaseValue *
+            Mathf.Pow(item.ValueMultiplier, currentTier);
+    }
     public bool TryPurchase(ShopItemType type)
     {
         ShopItemData item = GetItemData(type);
 
         int currentTier = _purchasedTiers[type];
 
-        if (currentTier >= item.Tiers.Count)
+        if (currentTier >= item.MaxTier)
         {
             Debug.Log("Max tier reached");
             return false;
         }
 
-        ShopTier nextTier = item.Tiers[currentTier];
+        int cost = GetUpgradeCost(type);
 
-        if (!CoinManager.Instance.HasEnoughCoins(nextTier.Cost))
+        if (!CoinManager.Instance.HasEnoughCoins(cost))
         {
             Debug.Log("Not enough coins");
             return false;
         }
 
-        CoinManager.Instance.RemoveCoins(nextTier.Cost);
+        CoinManager.Instance.RemoveCoins(cost);
 
         _purchasedTiers[type]++;
 
-        ApplyUpgrade(type, nextTier);
+        float value = GetUpgradeValue(type);
 
-        OnItemPurchased?.Invoke(type, nextTier.Tier);
+        ApplyUpgrade(type, value);
 
-        Debug.Log($"Purchased {type} Tier {nextTier.Tier}");
+        OnItemPurchased?.Invoke(type, currentTier + 1);
 
         return true;
     }
 
-    private void ApplyUpgrade(ShopItemType type, ShopTier tier)
+    private void ApplyUpgrade(ShopItemType type, float value)
     {
         switch (type)
         {
             case ShopItemType.CoinMultiplier:
-                CoinManager.Instance.SetMultiplier(tier.Value);
+                CoinManager.Instance.SetMultiplier(value);
+                Debug.Log($"Coin multiplier upgraded to {value}");
                 break;
 
             case ShopItemType.LuckMultiplier:
-                Debug.Log($"Luck multiplier upgraded to {tier.Value}");
+                Debug.Log($"Luck multiplier upgraded to {value}");
                 break;
 
             case ShopItemType.SpawnRateMultiplier:
-                Debug.Log("Golden spatula unlocked");
+                Debug.Log($"Spawn rate multiplier upgraded to {value}");
                 break;
 
             default:

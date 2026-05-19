@@ -5457,6 +5457,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ShopManager
   _shopItems:
   - {fileID: 11400000, guid: b7beb76f962e35b4e9b0ce2aac06581c, type: 2}
+  - {fileID: 11400000, guid: 95f36e688b432654691a4974bb82f6e2, type: 2}
+  - {fileID: 11400000, guid: 2476bfcb23da9e6479a4abc0ea63ab44, type: 2}
 --- !u!1001 &496387033
 PrefabInstance:
   m_ObjectHideFlags: 0
