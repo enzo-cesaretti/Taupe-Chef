@@ -96,6 +96,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: mole
       objectReference: {fileID: 0}
+    - target: {fileID: 6237111362709433441, guid: eae01d1ba8b3a2d47a3c15ddff6ea06f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 3aa619619f7f0674783450bf332c1e6b, type: 2}
     m_RemovedComponents:
     - {fileID: 8409764535998676781, guid: eae01d1ba8b3a2d47a3c15ddff6ea06f, type: 3}
     m_RemovedGameObjects: []
