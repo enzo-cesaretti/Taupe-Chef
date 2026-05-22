@@ -34,6 +34,7 @@ public class ScoreManager : MonoBehaviour
         currentScore += amount;
         OnScoreChanged?.Invoke(currentScore);
         OnScoreAdded?.Invoke(amount);
+        print(currentScore);
     }
 
     public bool SpendScore(int amount)
