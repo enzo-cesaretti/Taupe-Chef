@@ -181,7 +181,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3095061884893018581}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0ad34abafad169848a38072baa96cdb2, type: 3}
   m_Name: 
@@ -317,3 +317,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Hammer
   isCharged: 1
   minVelocity: 0.5
+  dmg: 1
+  cost: 100
