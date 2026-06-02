@@ -66,6 +66,7 @@ public class Mole : MonoBehaviour
         };
 
         ScoreManager.Instance.AddScore(score);
+        CoinManager.Instance.AddCoins(score);
     }
 
     private void SquashMole()
