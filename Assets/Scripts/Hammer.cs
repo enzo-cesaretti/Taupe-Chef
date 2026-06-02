@@ -3,7 +3,9 @@ using UnityEngine;
 public class Hammer : MonoBehaviour, IWeapon
 {
     [SerializeField] private bool isCharged = true;
-    [SerializeField] private float minVelocity = 1.5f;
+    [SerializeField] private float minVelocity = 0.5f;
+
+    [SerializeField] public int dmg = 1;
 
     private Rigidbody rb;
 
@@ -12,9 +14,14 @@ public class Hammer : MonoBehaviour, IWeapon
         rb = GetComponentInChildren<Rigidbody>();
     }
 
+    public int getDmg()
+    {
+        return dmg;
+    }
+
     public bool CanHit()
     {
-        if (!isCharged) return false;
+        // if (!isCharged) return false;
         if (rb == null) return false;
 
         return rb.linearVelocity.magnitude >= minVelocity;

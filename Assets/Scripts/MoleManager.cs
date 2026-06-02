@@ -57,7 +57,7 @@ public class MoleManager : MonoBehaviour
 
         foreach (var mole in moles)
         {
-            if (mole.State != Mole.MoleState.Down)
+            if (mole.State != MoleState.Down)
                 mole.MoleDown();
         }
     }
@@ -108,7 +108,7 @@ public class MoleManager : MonoBehaviour
     {
         yield return new WaitForSeconds(duration);
 
-        if (mole != null && mole.State == Mole.MoleState.Up)
+        if (mole != null && mole.State == MoleState.Up)
         {
             mole.MoleDown();
         }
@@ -122,7 +122,7 @@ public class MoleManager : MonoBehaviour
 
         foreach (var mole in moles)
         {
-            if (mole.State != Mole.MoleState.Down)
+            if (mole.State != MoleState.Down)
                 count++;
         }
 
@@ -135,7 +135,7 @@ public class MoleManager : MonoBehaviour
 
         foreach (var mole in moles)
         {
-            if (mole.State == Mole.MoleState.Down)
+            if (mole.State == MoleState.Down)
                 available.Add(mole);
         }
 

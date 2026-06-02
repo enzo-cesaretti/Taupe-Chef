@@ -16,10 +16,10 @@ public class MoleHitbox : MonoBehaviour
         var weapon = other.GetComponentInParent<IWeapon>();
         if (weapon == null) return;
 
-        if (mole.State != Mole.MoleState.Up) return;
+        if (mole.State != MoleState.Up) return;
         if (!weapon.CanHit()) return;
 
-        mole.RegisterHit();
+        mole.RegisterHit(weapon.getDmg());
 
         weapon.OnHit();
     }
