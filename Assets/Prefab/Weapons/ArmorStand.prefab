@@ -677,7 +677,7 @@ GameObject:
   - component: {fileID: 5814915882969862443}
   - component: {fileID: 454815930257315855}
   m_Layer: 0
-  m_Name: Armor_stand
+  m_Name: ArmorStand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

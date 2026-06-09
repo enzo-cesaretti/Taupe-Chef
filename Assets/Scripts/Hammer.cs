@@ -2,9 +2,11 @@ using System;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
+[RequireComponent(typeof(XRGrabInteractable))]
+
 public class Hammer : MonoBehaviour, IWeapon
 {
-    [SerializeField] private bool isCharged = true;
+    [SerializeField] private bool unlocked = false;
     [SerializeField] private float minVelocity = 0.5f;
 
     [SerializeField] public int dmg = 1;
@@ -15,6 +17,11 @@ public class Hammer : MonoBehaviour, IWeapon
 
     private void Awake()
     {
+        if (unlocked)
+        {
+            activated = true;
+            GetComponent<XRGrabInteractable>().enabled = true;
+        }
         rb = GetComponentInChildren<Rigidbody>();
     }
 
@@ -51,11 +58,11 @@ public class Hammer : MonoBehaviour, IWeapon
 
     public void OnHit()
     {
-        isCharged = false;
+
     }
 
     public void Recharge()
     {
-        isCharged = true;
+
     }
 }
