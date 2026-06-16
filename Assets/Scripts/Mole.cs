@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEditor.UI;
 
 
 public enum MoleType
@@ -19,37 +20,53 @@ public enum MoleState
 
 public class Mole : MonoBehaviour
 {
+    private static readonly int HitHash = Animator.StringToHash("hit");
     public Animator _animator;
-
-
-
-    public int Hp { get; private set; } = 0;
-    public int BaseHp { get; private set; } = 2;
+    public int Hp = 0;
     public MoleManager manager;
     public MoleState State { get; private set; } = MoleState.Down;
     public MoleType type = MoleType.Normal;
 
+    [SerializeField] private Material goldenMaterial;
+    [SerializeField] private Material normalMaterial;
 
     private const int NORMALSCORE = 10;
     private const int GOLDENSCORE = 100;
 
+    [SerializeField] private MeshRenderer moleRenderer;
 
     public void RegisterHit(int dmg)
     {
         Hp -= dmg;
+        Debug.Log($"Mole hit! Remaining HP: {Hp}");
         if (Hp <= 0)
         {
             SquashMole();
         }
         else
         {
-            _animator.Play("hit");
+            _animator.Play(HitHash, 0, 0f);
         }
     }
 
-    public void MoleUp()
+    public void MoleUp(bool golden)
     {
-        Hp = BaseHp;
+        if (golden)
+        {
+            type = MoleType.Golden;
+            Hp = 4;
+            moleRenderer.material = goldenMaterial;
+
+        }
+        else
+        {
+            type = MoleType.Normal;
+            Hp = 2;
+            if (moleRenderer.material != normalMaterial)
+            {
+                moleRenderer.material = normalMaterial;
+            }
+        }
         State = MoleState.GoingUp;
         _animator.Play("popUp");
         StartCoroutine(WaitForAnimation("popUp"));

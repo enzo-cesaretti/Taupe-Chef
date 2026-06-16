@@ -103,10 +103,12 @@ public sealed class ShopManager : MonoBehaviour
                 break;
 
             case ShopItemType.LuckMultiplier:
+                MoleManager.Instance.SetLuckMultiplier(value);
                 Debug.Log($"Luck multiplier upgraded to {value}");
                 break;
 
             case ShopItemType.SpawnRateMultiplier:
+                MoleManager.Instance.SetSpawnRateMultiplier(value);
                 Debug.Log($"Spawn rate multiplier upgraded to {value}");
                 break;
 

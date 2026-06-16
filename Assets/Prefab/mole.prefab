@@ -196,6 +196,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Mole
   _animator: {fileID: 8047015423992518190}
   manager: {fileID: 0}
+  type: 0
+  goldenMaterial: {fileID: 2100000, guid: 6365b4ebbb4aec0418846efb6b400491, type: 2}
+  normalMaterial: {fileID: 2100000, guid: 3aa619619f7f0674783450bf332c1e6b, type: 2}
+  moleRenderer: {fileID: 6237111362709433441}
 --- !u!95 &8047015423992518190
 Animator:
   serializedVersion: 7
@@ -218,3 +222,8 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!23 &6237111362709433441 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 258f53c6e9ca1f44cb97c2bf271112fe, type: 3}
+  m_PrefabInstance: {fileID: 4706048429036122341}
+  m_PrefabAsset: {fileID: 0}

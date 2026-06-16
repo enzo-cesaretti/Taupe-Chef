@@ -2,15 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoleManager : MonoBehaviour
+public sealed class MoleManager : MonoBehaviour
 {
+    public static MoleManager Instance { get; private set; }
+
+    public float SpawnRateMultiplier => _spawnRateMultiplier;
+    public float LuckMultiplier => _luckMultiplier;
+
     [Header("Moles")]
     [SerializeField] private List<Mole> moles = new();
 
     [Header("Spawn Settings")]
-    [SerializeField] private float minSpawnDelay = 0.5f;
-    [SerializeField] private float maxSpawnDelay = 1.5f;
+    [SerializeField] private float minSpawnDelay = 3f;
+    [SerializeField] private float maxSpawnDelay = 6f;
     [SerializeField] private int maxMolesUp = 4;
+    [SerializeField] private float _spawnRateMultiplier = 1f;
+    [SerializeField] private float _luckMultiplier = 1f;
 
     [Header("Stay Up Time")]
     [SerializeField] private float minStayDuration = 1.5f;
@@ -20,7 +27,21 @@ public class MoleManager : MonoBehaviour
     private Coroutine loopRoutine;
 
     // Track active timers per mole
-    private Dictionary<Mole, Coroutine> activeMoleTimers = new();
+    private readonly Dictionary<Mole, Coroutine> activeMoleTimers = new();
+
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+
+        DontDestroyOnLoad(gameObject);
+    }
+
 
     private void Start()
     {
@@ -62,11 +83,23 @@ public class MoleManager : MonoBehaviour
         }
     }
 
+    public void SetSpawnRateMultiplier(float multiplier)
+    {
+        _spawnRateMultiplier = multiplier;
+    }
+
+    public void SetLuckMultiplier(float multiplier)
+    {
+        _luckMultiplier = multiplier;
+    }
+
     private IEnumerator SpawnLoop()
     {
         while (isRunning)
         {
-            yield return new WaitForSeconds(Random.Range(minSpawnDelay, maxSpawnDelay));
+            var delay = Random.Range(minSpawnDelay - (0.5f * _spawnRateMultiplier), maxSpawnDelay - (0.5f * _spawnRateMultiplier));
+
+            yield return new WaitForSeconds(delay);
 
             TrySpawnMole();
         }
@@ -83,7 +116,10 @@ public class MoleManager : MonoBehaviour
         {
             CancelMoleTimer(mole);
 
-            mole.MoleUp();
+            var goldenChance = 0.1f * _luckMultiplier;
+            var isGolden = Random.value < goldenChance;
+
+            mole.MoleUp(isGolden);
 
             float stayTime = Random.Range(minStayDuration, maxStayDuration);
 
